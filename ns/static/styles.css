@@ -1,0 +1,48 @@
+/* Define Frutiger font */
+@font-face {
+    font-family: 'Frutiger';
+    src: url('{{ url_for("static", filename="fonts/frutiger_bold.ttf") }}') format('ttf');
+}
+
+/* Apply Frutiger font to the body */
+body {
+    font-family: 'Frutiger', sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100vw; /* 100% of the viewport width */
+    height: 100vh; /* Full viewport height */
+    box-sizing: border-box; /* Include border in total width and height calculation */
+}
+
+/* Header container with flexbox */
+.header-container {
+    display: flex;
+    justify-content: space-between; /* Position items at opposite ends */
+    align-items: center;  /* Vertically center the items */
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: #003082;
+    color: #fff;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+.header-container2 {
+    display: flex;
+    justify-content: space-between; /* Position items at opposite ends */
+    align-items: center;  /* Vertically center the items */
+    padding-right: 30px;
+    background-color: #FFFFFF;
+    color: #003082;
+}
+
+/* Define delay font color */
+.delay {
+    color: #DB0029; /* Change to your preferred color */
+}
+
+.negdelay {
+    color: #FF7700; /* Change to your preferred color */
+}

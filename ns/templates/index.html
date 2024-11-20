@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Times</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* Style for the clock */
+        #live-time {
+            font-size: 50px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="header-container">
+            <h1>Aankomsttijden</h1>
+            <div id="live-time"></div>
+        </div>
+        <ul>
+            {% for user, time_info in home_times.items() %}
+                <div class="header-container2">
+                    <h1>{{ user }}</h1>
+                    {% if '+' in time_info %}
+                        <h1>
+                        {{ time_info.split(' +')[0] }}
+                        <span class="delay">+{{ time_info.split(' +')[1] }}</span>
+                        </h1>
+                    {% else %}
+                        <h1>{{ time_info }}</h1> 
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <script>
+        // Function to update the live time every second
+        function updateLiveTime() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+
+            // Display the current time in the 'live-time' div
+            document.getElementById("live-time").textContent = `${hours}:${minutes}`;
+        }
+
+        // Call the function every second to update the time
+        setInterval(updateLiveTime, 1000);
+
+        // Initial call to set the time immediately
+        updateLiveTime();
+    </script>
+</body>
+</html>
